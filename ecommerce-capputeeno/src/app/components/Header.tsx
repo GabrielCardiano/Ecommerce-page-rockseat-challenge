@@ -2,15 +2,17 @@
 import * as React from 'react';
 import { styled } from 'styled-components';
 import { Saira_Stencil_One } from 'next/font/google';
+import { PrimaryInputWithSearchIcon } from './PrimaryInput';
+import { CartControl } from './CartControl';
 
 interface HeaderProps {
 
 };
 
-const sairaStencil = Saira_Stencil_One({ 
+const sairaStencil = Saira_Stencil_One({
     subsets: ['latin'],
     weight: ['400'],
-  })
+})
 
 const TagHeader = styled.header`
     display:flex;
@@ -30,8 +32,10 @@ export function Header(props: HeaderProps) {
     return (
         <TagHeader>
             <Logo className={sairaStencil.className}>Capputeeno</Logo>
-            <div>teste</div>
-
+            <div>
+                <PrimaryInputWithSearchIcon placeholder='Procurando algo específico?'/>
+                <CartControl/>
+            </div>
         </TagHeader>
     );
 };

@@ -2,7 +2,7 @@ import { Header } from './components/Header'
 import './globals.css'
 import { Saira } from 'next/font/google'
 
-const saira = Saira({ 
+const saira = Saira({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
 })
@@ -19,8 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Header/>
-      <body className={saira.className}>{children}</body>
+      <body className={saira.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
