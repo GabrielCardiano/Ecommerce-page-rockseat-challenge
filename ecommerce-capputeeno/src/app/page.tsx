@@ -3,6 +3,6 @@ import styles from './page.module.css'
 
 export default function Home() {
   return (
-  <div>A wizard is never late</div>
+    <div>A wizard is never late</div>
   )
 }
