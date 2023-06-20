@@ -5,10 +5,11 @@ import { styled } from "styled-components";
 const CartCount = styled.span`
     width: 17px;
     height: 17px;
+    border-radius: 50%;
+    padding: 0 5px;
+    font-size: 10px;
 
-    position: absolute;
-    left: -10px;
-    top: 50%;
+    margin-left: -10px;
 
     background-color: var(--delete-color);
     color: white;
@@ -19,12 +20,12 @@ const Container = styled.div`
 `;
 
 export function CartControl() {
-    const { value } = useLocalStorage('cart-items')
+    const { value } = useLocalStorage('cart-items', [])
 
     return (
-        <div>
+        <Container>
             <CartIcon />
-            {value.lenght && <CartCount>{value.lenght}</CartCount>}
-        </div>
+            {value.length && <CartCount>{value.length}</CartCount>}
+        </Container>
     )
 }
