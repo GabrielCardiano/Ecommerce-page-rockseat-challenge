@@ -20,7 +20,7 @@ export const PrimaryInput = styled.input`
 
 const Inputcontainer = styled.div`
      position: relative;
-     width: width: 352px;
+     width: 352px;
 
      svg {
          position: absolute;
@@ -31,13 +31,14 @@ const Inputcontainer = styled.div`
 `;
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-
+    value: string,
+    handleChannge: (value: string) => void,
 }
 
 export function PrimaryInputWithSearchIcon(props: InputProps) { 
     return (
         <Inputcontainer>
-            <PrimaryInput {...props}/>
+            <PrimaryInput onChange={(e) => props.handleChannge(e.target.value)} {...props}/>
             <SearchIcon/>
         </Inputcontainer>
     )

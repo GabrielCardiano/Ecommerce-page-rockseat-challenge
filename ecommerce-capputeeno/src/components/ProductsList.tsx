@@ -12,7 +12,7 @@ const ListContainer = styled.div`
    margin-top: 32px;
 `
 
-export function ProductsList(props: ProductsListProps) {
+export function ProductsList() {
   const { data } = useProducts()
 
   return (
