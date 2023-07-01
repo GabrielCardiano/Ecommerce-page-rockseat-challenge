@@ -2,7 +2,7 @@ import { FilterContextProvider } from '@/context/FilterContext'
 import { Header } from '../components/Header'
 import './globals.css'
 import { Saira } from 'next/font/google'
-import { DefaultProviders } from '@/components/default-providers'
+import { DefaultProviders } from '@/components/DefaultProviders'
 
 const saira = Saira({
   subsets: ['latin'],
