@@ -2,6 +2,7 @@ import { FilterContextProvider } from '@/context/FilterContext'
 import { Header } from '../components/Header'
 import './globals.css'
 import { Saira } from 'next/font/google'
+import { DefaultProviders } from '@/components/default-providers'
 
 const saira = Saira({
   subsets: ['latin'],
@@ -21,10 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={saira.className}>
-        <FilterContextProvider>
+        <DefaultProviders>
           <Header />
           {children}
-        </FilterContextProvider>        
+        </DefaultProviders>        
       </body>
     </html>
   )
