@@ -2,7 +2,7 @@
 
 import { BackButton } from "@/components/BackButton";
 import { DefaultPageLayout } from "@/components/DefaultPageLayout";
-import { ShopBagIcon } from "@/components/icons/ShopBagIcon";
+import { ShopBagIcon } from "@/components/icons/ShoppingBagIcon";
 import { useProduct } from "@/hooks/useProduct";
 import { formatPrice } from "@/utils/FormatPrice";
 import { styled } from "styled-components";
@@ -15,7 +15,7 @@ const Container = styled.div`
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    
+
     section {
         display: flex;
         justify-content: center;
@@ -108,6 +108,26 @@ const ProductInfo = styled.div`
 export default function Product({ searchParams }: { searchParams: { id: string } }) {
     const { data } = useProduct(searchParams.id)
 
+    const handleAddToCart = () => {
+        let cartItems = localStorage.getItem('cart-items')
+        if (cartItems) {
+            let cartItemsArray = JSON.parse(cartItems);
+
+            let existingProductIndex = cartItemsArray.findIndex((item: { id: string }) => item.id === searchParams.id)
+
+            if (existingProductIndex !== -1) {
+                cartItemsArray[existingProductIndex].quantity += 1;
+            } else {
+                cartItemsArray.push({ ...data, quantity: 1, id: searchParams.id, })
+            }
+
+            localStorage.setItem('cart-items', JSON.stringify(cartItemsArray))
+        } else {
+            const initialCart = [{ ...data, quantity: 1, id: searchParams.id, }]
+            localStorage.setItem('cart-items', JSON.stringify(initialCart))
+        }
+    }
+
     return (
         <DefaultPageLayout>
             <Container>
@@ -128,8 +148,8 @@ export default function Product({ searchParams }: { searchParams: { id: string }
                             </div>
                         </ProductInfo>
 
-                        <button>
-                            <ShopBagIcon    />
+                        <button onClick={handleAddToCart}>
+                            <ShopBagIcon />
                             Adicionar ao carrinho
                         </button>
                     </div>
